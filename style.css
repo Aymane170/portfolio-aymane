@@ -811,3 +811,29 @@ canvas {
   margin-top: 20px;
   opacity: 0.85;
 }
+
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  width: 48px;       
+  height: 48px;      
+  background-color: var(--blue-color);
+  color: var(--primary);
+  border: none;
+  border-radius: 50%;  
+  font-size: 1.8rem;
+  line-height: 48px;  
+  text-align: center;  
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  z-index: 1100;
+  padding: 0;       
+}
+
+#back-to-top:hover {
+  background-color: #52e3be;
+}
+
