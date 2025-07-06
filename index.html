@@ -1,147 +1,154 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio - Aymane</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body class="light-mode">
   <header>
-    
+
     <h1 class="modern-title">
       Aymane <span class="highlight">Rami</span>
     </h1>
     <p class="subtitle">Développeur Full-Stack Junior & Passionné de Data</p>
   </header>
   <nav class="navbar">
-  <div class="burger" onclick="toggleMenu()">
-    <div></div><div></div><div></div>
-  </div>
-  <ul class="nav-links" id="navLinks">
-    <li class="nav-item "><a href="#presentation">À propos</a></li>
-    <li class="nav-item "><a href="#competences">Compétences</a></li>
-    <li class="nav-item "><a href="#experience">Expériences</a></li>
-    <li class="nav-item "><a href="#projets">Projets</a></li>
-    <li class="nav-item "><a href="#contact">Contact</a></li>
-    
-  </ul>
-  <div class="nav-right">
-<!-- Bouton qui ouvre le modal -->
-<button class="cv-button" onclick="openModal()">📄 Télécharger mon CV</button>
+    <div class="burger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-item "><a href="#presentation">À propos</a></li>
+      <li class="nav-item "><a href="#competences">Compétences</a></li>
+      <li class="nav-item "><a href="#experience">Expériences</a></li>
+      <li class="nav-item "><a href="#projets">Projets</a></li>
+      <li class="nav-item "><a href="#contact">Contact</a></li>
 
-  </div>
-</nav>
+    </ul>
+    <div class="nav-right">
+      <!-- Bouton qui ouvre le modal -->
+      <button class="cv-button" onclick="openModal()">📄 Télécharger mon CV</button>
+
+    </div>
+  </nav>
 
 
 
   <section id="presentation">
     <h2 class="section-title blue-text">À propos de moi</h2>
     <p>
-      Développeur junior full-stack avec plus d’un an d’expérience pratique, acquise à travers un stage en entreprise et plusieurs projets réels alliant développement logiciel, gestion de données et création d’API. Rigoureux, curieux et orienté amélioration continue, je conçois des applications robustes et maintenables, et j'apprécie le travail en équipe.
+      Développeur junior full-stack avec plus d’un an d’expérience pratique, acquise à travers un stage en entreprise et
+      plusieurs projets réels alliant développement logiciel, gestion de données et création d’API. Rigoureux, curieux
+      et orienté amélioration continue, je conçois des applications robustes et maintenables, et j'apprécie le travail
+      en équipe.
     </p>
   </section>
 
-<section id="competences">
-  <h2 class="section-title blue-text">Compétences</h2>
+  <section id="competences">
+    <h2 class="section-title blue-text">Compétences</h2>
 
-  <div class="competence-row">
-    <div class="competence-info">
-      <h3>Langages informatiques</h3>
-      <div class="skills-container">
-        <div class="skill">
-          <img src="logos/c-sharp-logo.png" alt="C#" />
-          <span class="skill-name">C#</span>
-        </div>
-        <div class="skill">
-          <img src="logos/java-logo.svg" alt="Java" />
-          <span class="skill-name">Java</span>
-        </div>
-        <div class="skill">
-          <img src="logos/python-logo.svg" alt="Python" />
-          <span class="skill-name">Python</span>
-        </div>
-        <div class="skill">
-          <img src="logos/sql-logo.svg" alt="SQL" />
-          <span class="skill-name">SQL</span>
-        </div>
-        <div class="skill">
-          <img src="logos/javascript-logo.svg" alt="JavaScript" />
-          <span class="skill-name">JavaScript</span>
+    <div class="competence-row">
+      <div class="competence-info">
+        <h3>Langages informatiques</h3>
+        <div class="skills-container">
+          <div class="skill">
+            <img src="logos/c-sharp-logo.png" alt="C#" />
+            <span class="skill-name">C#</span>
+          </div>
+          <div class="skill">
+            <img src="logos/java-logo.svg" alt="Java" />
+            <span class="skill-name">Java</span>
+          </div>
+          <div class="skill">
+            <img src="logos/python-logo.svg" alt="Python" />
+            <span class="skill-name">Python</span>
+          </div>
+          <div class="skill">
+            <img src="logos/sql-logo.svg" alt="SQL" />
+            <span class="skill-name">SQL</span>
+          </div>
+          <div class="skill">
+            <img src="logos/javascript-logo.svg" alt="JavaScript" />
+            <span class="skill-name">JavaScript</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="competence-chart">
-      <canvas id="skillsChart"></canvas>
-    </div>
-  </div>
-
-  <div class="competence-row">
-    <div class="competence-info">
-      <h3 class="section-title blue-text">Frameworks</h3>
-      <div class="skills-container">
-        <div class="skill">
-          <img src="logos/asp-net-logo.svg" alt="ASP .NET" />
-          <span class="skill-name">ASP .NET</span>
-        </div>
-        <div class="skill">
-          <img src="logos/django-logo.svg" alt="Django" />
-          <span class="skill-name">Django</span>
-        </div>
-        <div class="skill">
-          <img src="logos/flutter-logo.svg" alt="Flutter" />
-          <span class="skill-name">Flutter</span>
-        </div>
-        <div class="skill">
-          <img src="logos/github-actions-logo.svg" alt="GitHub Actions" />
-          <span class="skill-name">Github Actions</span>
-        </div>
-        <div class="skill">
-          <img src="logos/entity-framework-logo.png" alt="Entity Framework" />
-          <span class="skill-name">Entity Framework</span>
-        </div>
-        <div class="skill">
-          <img src="logos/springboot-logo.png" alt="Spring Boot" />
-          <span class="skill-name">Spring Boot</span>
-        </div>
+      <div class="competence-chart">
+        <canvas id="skillsChart"></canvas>
       </div>
     </div>
-    <div class="competence-chart">
-      <canvas id="frameworksChart"></canvas>
-    </div>
-  </div>
 
-  <div class="competence-row">
-    <div class="competence-info">
-      <h3 class="section-title blue-text">Outils</h3>
-      <div class="skills-container">
-        <div class="skill">
-          <img src="logos/git-logo.svg" alt="Git" />
-          <span class="skill-name">Git</span>
-        </div>
-        <div class="skill">
-          <img src="logos/methode agile.png" alt="Méthodologie Agile" />
-          <span class="skill-name">Méthodologie Agile</span>
-        </div>
-        <div class="skill">
-          <img src="logos/dbt-logo.svg" alt="dbt" />
-          <span class="skill-name">dbt</span>
-        </div>
-        <div class="skill">
-          <img src="logos/snowflake-logo.svg" alt="Snowflake" />
-          <span class="skill-name">Snowflake</span>
-        </div>
-        <div class="skill">
-          <img src="logos/tableau-logo.svg" alt="Tableau" />
-          <span class="skill-name">Tableau</span>
+    <div class="competence-row">
+      <div class="competence-info">
+        <h3 class="section-title blue-text">Frameworks</h3>
+        <div class="skills-container">
+          <div class="skill">
+            <img src="logos/asp-net-logo.svg" alt="ASP .NET" />
+            <span class="skill-name">ASP .NET</span>
+          </div>
+          <div class="skill">
+            <img src="logos/django-logo.svg" alt="Django" />
+            <span class="skill-name">Django</span>
+          </div>
+          <div class="skill">
+            <img src="logos/flutter-logo.svg" alt="Flutter" />
+            <span class="skill-name">Flutter</span>
+          </div>
+          <div class="skill">
+            <img src="logos/github-actions-logo.svg" alt="GitHub Actions" />
+            <span class="skill-name">Github Actions</span>
+          </div>
+          <div class="skill">
+            <img src="logos/entity-framework-logo.png" alt="Entity Framework" />
+            <span class="skill-name">Entity Framework</span>
+          </div>
+          <div class="skill">
+            <img src="logos/springboot-logo.png" alt="Spring Boot" />
+            <span class="skill-name">Spring Boot</span>
+          </div>
         </div>
       </div>
+      <div class="competence-chart">
+        <canvas id="frameworksChart"></canvas>
+      </div>
     </div>
-    <div class="competence-chart">
-      <canvas id="toolsChart"></canvas>
+
+    <div class="competence-row">
+      <div class="competence-info">
+        <h3 class="section-title blue-text">Outils</h3>
+        <div class="skills-container">
+          <div class="skill">
+            <img src="logos/git-logo.svg" alt="Git" />
+            <span class="skill-name">Git</span>
+          </div>
+          <div class="skill">
+            <img src="logos/methode agile.png" alt="Méthodologie Agile" />
+            <span class="skill-name">Méthodologie Agile</span>
+          </div>
+          <div class="skill">
+            <img src="logos/dbt-logo.svg" alt="dbt" />
+            <span class="skill-name">dbt</span>
+          </div>
+          <div class="skill">
+            <img src="logos/snowflake-logo.svg" alt="Snowflake" />
+            <span class="skill-name">Snowflake</span>
+          </div>
+          <div class="skill">
+            <img src="logos/tableau-logo.svg" alt="Tableau" />
+            <span class="skill-name">Tableau</span>
+          </div>
+        </div>
+      </div>
+      <div class="competence-chart">
+        <canvas id="toolsChart"></canvas>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
   <section id="experience">
@@ -149,30 +156,30 @@
     <div class="experience-grid">
 
       <a href="https://github.com/Aymane170/hospital-analytics" target="_blank" rel="noopener noreferrer">
-      <div class="card">
-        <h3>Projet personnel – Hospital Analytics</h3>
-        <p>Juin 2025</p>
-        <ul>
-          <li>Simulation et analyse de données médicales à partir de données synthétiques</li>
-          <li>Construction d’un pipeline ETL avec DBT et Snowflake</li>
-          <li>Scripts Python pour automatisation et génération de rapports</li>
-          <li>Requêtes SQL avancées pour analyses exploratoires</li>
-        </ul>
-      </div>
-      </a> 
-      
+        <div class="card">
+          <h3>Projet personnel – Hospital Analytics</h3>
+          <p>Juin 2025</p>
+          <ul>
+            <li>Simulation et analyse de données médicales à partir de données synthétiques</li>
+            <li>Construction d’un pipeline ETL avec DBT et Snowflake</li>
+            <li>Scripts Python pour automatisation et génération de rapports</li>
+            <li>Requêtes SQL avancées pour analyses exploratoires</li>
+          </ul>
+        </div>
+      </a>
+
       <a href="https://github.com/Aymane170/FakeSchoolData" target="_blank" rel="noopener noreferrer">
-      <div class="card" >
-        <h3>Projet personnel – FakeSchoolData</h3>
-        <p>Avril 2025 – Juin 2025</p>
-        <ul>
-          <li>Pipeline de données simulées pour école fictive</li>
-          <li>CSV synthétiques générés via Python/Faker</li>
-          <li>Base de données Snowflake et transformations avec DBT</li>
-          <li>Rapports visuels via Matplotlib</li>
-          <li>Automatisation complète avec GitHub Actions</li>
-        </ul>
-      </div>
+        <div class="card">
+          <h3>Projet personnel – FakeSchoolData</h3>
+          <p>Avril 2025 – Juin 2025</p>
+          <ul>
+            <li>Pipeline de données simulées pour école fictive</li>
+            <li>CSV synthétiques générés via Python/Faker</li>
+            <li>Base de données Snowflake et transformations avec DBT</li>
+            <li>Rapports visuels via Matplotlib</li>
+            <li>Automatisation complète avec GitHub Actions</li>
+          </ul>
+        </div>
       </a>
 
       <div class="card">
@@ -182,24 +189,25 @@
           <li>Développement d’un module de génération automatique de documents</li>
           <li>Communication à la base de données SQLServer via Entity Framework</li>
           <li>Création d'une API communiquant les différents templates de document juridique</li>
+          <li>Rapports visuels via Tableau</li>
           <li>Techno : C#, ASP.NET Core, Dart, Flutter, GitLab</li>
           <li>Collaboration avec 4 développeurs, méthode agile</li>
         </ul>
       </div>
-        
+
       <a href="https://github.com/AymaneR17/ConqueringSpace" target="_blank" rel="noopener noreferrer">
-      <div class="card">
-        <h3>Projet personnel – ConqueringSpace</h3>
-        <p>Octobre 2023 – Janvier 2024</p>
-        <ul>
-          <li>Projet réalisé en C# ASP .NET</li>
-          <li>Simulation de l'univers qui nous entoure</li>
-          <li>Gestion des objets célestes tels que des comètes, des constellations, satellites, planètes</li>
-          <li>Deux API, une pour l'authentification et l'autre pour la gestion des objets célestes</li>
-          <li>Communication à la base de données SQLServer via Entity Framework</li>
-          <li>Frontend réalisé en JS et Page Razor (cshtml)</li>
-        </ul>
-      </div>
+        <div class="card">
+          <h3>Projet personnel – ConqueringSpace</h3>
+          <p>Octobre 2023 – Janvier 2024</p>
+          <ul>
+            <li>Projet réalisé en C# ASP .NET</li>
+            <li>Simulation de l'univers qui nous entoure</li>
+            <li>Gestion des objets célestes tels que des comètes, des constellations, satellites, planètes</li>
+            <li>Deux API, une pour l'authentification et l'autre pour la gestion des objets célestes</li>
+            <li>Communication à la base de données SQLServer via Entity Framework</li>
+            <li>Frontend réalisé en JS et Page Razor (cshtml)</li>
+          </ul>
+        </div>
       </a>
     </div>
   </section>
@@ -211,63 +219,65 @@
       <li><strong>Express Market</strong> – C# / MAUI, Access : Gestion d’une boutique multidevice</li>
       <li><strong>UFCEvent</strong> – Java Android : Application mobile avec paris virtuels sur événements MMA</li>
       <li><strong>Helb Park</strong> – JavaFX : Gestion complète de parking, patterns MVC, Strategy</li>
-      <li><strong>Helb Manager</strong> – Python / Django :	Développement d'un site web complet de gestion de projet </li>
+      <li><strong>Helb Manager</strong> – Python / Django : Développement d'un site web complet de gestion de projet
+      </li>
 
     </ul>
   </section>
 
- <section id="contact">
-  <h2 class="section-title blue-text">Contact</h2>
-  <p>
-    <img src="logos/email-logo.svg" alt="Email" class="contact-icon" />
-    <a href="mailto:aymanerami9@email.com">aymanerami9@email.com</a>
-  </p>
-  <p>
-    <img src="logos/telephone-logo.svg" alt="GSM" class="contact-icon" />
-    <a href="tel:+32484826048">+32 484 82 60 48</a>
-  </p>
-  <p>
-    <img src="logos/github-logo.svg" alt="GitHub" class="contact-icon" />
-    <a href="https://www.github.com/Aymane170" target="_blank" rel="noopener noreferrer">github.com/Aymane170</a>
-  </p>
-  <p>
-    <img src="logos/linkedin-logo.svg" alt="LinkedIn" class="contact-icon" />
-    <a href="https://www.linkedin.com/in/aymane-rami-6112a9221/" target="_blank" rel="noopener noreferrer">linkedin.com/in/aymane-rami-6112a9221</a>
-  </p>
-</section>
+  <section id="contact">
+    <h2 class="section-title blue-text">Contact</h2>
+    <p>
+      <img src="logos/email-logo.svg" alt="Email" class="contact-icon" />
+      <a href="mailto:aymanerami9@email.com">aymanerami9@email.com</a>
+    </p>
+    <p>
+      <img src="logos/telephone-logo.svg" alt="GSM" class="contact-icon" />
+      <a href="tel:+32484826048">+32 484 82 60 48</a>
+    </p>
+    <p>
+      <img src="logos/github-logo.svg" alt="GitHub" class="contact-icon" />
+      <a href="https://www.github.com/Aymane170" target="_blank" rel="noopener noreferrer">github.com/Aymane170</a>
+    </p>
+    <p>
+      <img src="logos/linkedin-logo.svg" alt="LinkedIn" class="contact-icon" />
+      <a href="https://www.linkedin.com/in/aymane-rami-6112a9221/" target="_blank"
+        rel="noopener noreferrer">linkedin.com/in/aymane-rami-6112a9221</a>
+    </p>
+  </section>
 
 
-<section id="contact" class="contact-section">
-  <h2>Contactez-moi</h2>
+  <section id="contact" class="contact-section">
+    <h2>Contactez-moi</h2>
 
-  <form id="contact-form" action="https://formspree.io/f/manjzlbl" method="POST">
-    <input type="text" name="name" placeholder="Votre nom" required />
-    <input type="email" name="email" placeholder="Votre email" required />
-    <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-    <button type="submit">Envoyer</button>
-    <p id="form-status" class="status-message"></p>
-  </form>
-</section>
+    <form id="contact-form" action="https://formspree.io/f/manjzlbl" method="POST">
+      <input type="text" name="name" placeholder="Votre nom" required />
+      <input type="email" name="email" placeholder="Votre email" required />
+      <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
+      <p id="form-status" class="status-message"></p>
+    </form>
+  </section>
 
-<div id="cvModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h3>Choisissez une langue :</h3>
-    <div class="modal-buttons">
-      <a href="cv/CV_Aymane_Rami_FR.pdf" download class="cv-choice">📄 CV en Français</a>
-      <a href="cv/CV_Aymane_Rami_EN.pdf" download class="cv-choice">📄 CV en Anglais</a>
+  <div id="cvModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>Choisissez une langue :</h3>
+      <div class="modal-buttons">
+        <a href="cv/CV_Aymane_Rami_FR.pdf" download class="cv-choice">📄 CV en Français</a>
+        <a href="cv/CV_Aymane_Rami_EN.pdf" download class="cv-choice">📄 CV en Anglais</a>
+      </div>
     </div>
   </div>
-</div>
 
   <footer>
     <p>&copy; 2025 Aymane RAMI. Tous droits réservés.</p>
   </footer>
 
-<script src="https://unpkg.com/scrollreveal"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="script.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
 
 </body>
-</html>
 
+</html>

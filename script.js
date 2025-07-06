@@ -7,7 +7,7 @@ function closeModal() {
 }
 
 // Fermer le modal si on clique en dehors
-window.addEventListener("click", function(event) {
+window.addEventListener("click", function (event) {
   const modal = document.getElementById("cvModal");
   if (event.target === modal) {
     modal.style.display = "none";
@@ -30,12 +30,12 @@ const ctxTools = document.getElementById('toolsChart').getContext('2d');
 
 //Langages informatique
 const skillsChart = new Chart(ctx, {
-  type: 'radar', 
+  type: 'radar',
   data: {
     labels: ['Python', 'SQL', 'Java', 'C#', 'JavaScript'],
     datasets: [{
       label: 'Niveau de compétence / 100 ',
-      data: [85, 85, 90, 90, 75], 
+      data: [85, 85, 90, 90, 75],
       backgroundColor: 'rgba(0, 123, 255, 0.2)',
       borderColor: 'rgba(0, 123, 255, 1)',
       borderWidth: 2,
@@ -63,7 +63,7 @@ const frameworksChart = new Chart(ctxFrameworks, {
     labels: ['ASP .NET', 'Django', 'Flutter', 'GitHub Actions', 'Entity Framework', 'Spring Boot'],
     datasets: [{
       label: 'Niveau de maîtrise / 100 ',
-      data: [90, 75, 70, 70, 85, 85],  
+      data: [90, 75, 70, 70, 85, 85],
       backgroundColor: 'rgba(40, 167, 69, 0.3)',
       borderColor: 'rgba(40, 167, 69, 1)',
       borderWidth: 2,
@@ -91,7 +91,7 @@ const toolsChart = new Chart(ctxTools, {
     labels: ['Git', 'Méthodologie Agile', 'dbt', 'Snowflake', 'Tableau'],
     datasets: [{
       label: 'Niveau de maîtrise / 100 ',
-      data: [80, 95, 70, 70, 70], 
+      data: [80, 95, 70, 70, 70],
       backgroundColor: 'rgba(255, 193, 7, 0.3)',
       borderColor: 'rgba(255, 193, 7, 1)',
       borderWidth: 2,
