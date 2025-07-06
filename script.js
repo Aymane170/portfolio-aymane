@@ -112,6 +112,13 @@ const toolsChart = new Chart(ctxTools, {
   }
 });
 
+//toggle menu
+function toggleMenu() {
+  const navLinks = document.getElementById("navLinks");
+  navLinks.classList.toggle("active");
+}
+
+
 //script d'envoie du formulaire
 const form = document.getElementById('contact-form');
 const statusMsg = document.getElementById('form-status');
