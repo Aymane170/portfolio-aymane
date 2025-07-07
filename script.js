@@ -114,21 +114,44 @@ document.addEventListener('DOMContentLoaded', function () {
   const ctxFrameworks = document.getElementById('frameworksChart')?.getContext('2d');
   const ctxTools = document.getElementById('toolsChart')?.getContext('2d');
 
-  // Options de base communes à tous les graphiques radar
   const optionsBase = {
-    responsive: true, // Rend le graphique réactif à la taille du conteneur
-    animation: false, // Désactive l'animation par défaut de Chart.js au chargement
-    interaction: { mode: null }, // Désactive les interactions par défaut
+    responsive: true,
+    animation: false,
+    interaction: {
+      mode: 'nearest',
+      intersect: true,
+      axis: 'r'
+    },
+    plugins: {
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          label: function (context) {
+            return context.dataset.label + ': ' + context.parsed.r;
+          }
+        }
+      }
+    },
     scales: {
-      r: { // Configuration de l'axe radial pour les graphiques radar
-        beginAtZero: true, // Commence l'axe à zéro
-        max: 100,          // Valeur maximale de l'axe
+      r: {
+        beginAtZero: true,
+        max: 100,
         ticks: {
-          stepSize: 20   // Intervalle entre les ticks de l'axe
+          stepSize: 20
+        },
+        grid: {
+          color: 'rgba(0, 123, 255, 0.5)',
+          lineWidth: 3
+        },
+        angleLines: {
+          color: 'rgba(0, 123, 255, 0.7)',
+          lineWidth: 3
         }
       }
     }
   };
+
+
 
   // Crée le graphique des langages informatiques
   if (ctx) {
@@ -141,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
           data: [85, 85, 90, 90, 75], // Données pour chaque compétence
           backgroundColor: 'rgba(0, 123, 255, 0.2)', // Couleur de fond de la zone du graphique
           borderColor: 'rgba(0, 123, 255, 1)',     // Couleur de la bordure
-          borderWidth: 2,                          // Largeur de la bordure
+          borderWidth: 4,                          // Largeur de la bordure
           pointBackgroundColor: 'rgba(0, 123, 255, 1)', // Couleur des points
         }]
       },
@@ -160,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
           data: [90, 75, 70, 70, 85, 85],
           backgroundColor: 'rgba(40, 167, 69, 0.3)', // Vert
           borderColor: 'rgba(40, 167, 69, 1)',
-          borderWidth: 2,
+          borderWidth: 4,
           pointBackgroundColor: 'rgba(40, 167, 69, 1)'
         }]
       },
@@ -179,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
           data: [80, 95, 70, 70, 70],
           backgroundColor: 'rgba(255, 193, 7, 0.3)', // Jaune/Orange
           borderColor: 'rgba(255, 193, 7, 1)',
-          borderWidth: 2,
+          borderWidth: 4,
           pointBackgroundColor: 'rgba(255, 193, 7, 1)'
         }]
       },
