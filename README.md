@@ -57,35 +57,35 @@ Ce projet est principalement construit avec les technologies web fondamentales :
 
 
 # 📂 Structure du Projet
-.
-├── index.html
-├── style.css
-├── script.js
-├── audio/
-│   └── audio.mp3
-├── logos/
-│   ├── c-sharp-logo.png
-│   ├── java-logo.svg
-│   ├── python-logo.svg
-│   ├── sql-logo.svg
-│   ├── javascript-logo.svg
-│   ├── asp-net-logo.svg
-│   ├── django-logo.svg
-│   ├── flutter-logo.svg
-│   ├── github-actions-logo.svg
-│   ├── entity-framework-logo.png
-│   ├── springboot-logo.png
-│   ├── git-logo.svg
-│   ├── methode agile.png
-│   ├── dbt-logo.svg
-│   ├── snowflake-logo.svg
-│   ├── tableau-logo.svg
-│   ├── email-logo.svg
-│   ├── telephone-logo.svg
-│   └── linkedin-logo.svg
-└── cv/
-    ├── CV_Aymane_Rami_FR.pdf
-    └── CV_Aymane_Rami_EN.pdf
+    .
+    ├── index.html
+    ├── style.css
+    ├── script.js
+    ├── audio/
+    │   └── audio.mp3
+    ├── logos/
+    │   ├── c-sharp-logo.png
+    │   ├── java-logo.svg
+    │   ├── python-logo.svg
+    │   ├── sql-logo.svg
+    │   ├── javascript-logo.svg
+    │   ├── asp-net-logo.svg
+    │   ├── django-logo.svg
+    │   ├── flutter-logo.svg
+    │   ├── github-actions-logo.svg
+    │   ├── entity-framework-logo.png
+    │   ├── springboot-logo.png
+    │   ├── git-logo.svg
+    │   ├── methode agile.png
+    │   ├── dbt-logo.svg
+    │   ├── snowflake-logo.svg
+    │   ├── tableau-logo.svg
+    │   ├── email-logo.svg
+    │   ├── telephone-logo.svg
+    │   └── linkedin-logo.svg
+    └── cv/
+        ├── CV_Aymane_Rami_FR.pdf
+        └── CV_Aymane_Rami_EN.pdf
 
 
 # 👤 Auteur
