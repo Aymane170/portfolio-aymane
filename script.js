@@ -231,6 +231,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
+  const burger = document.querySelector('.burger');
+  const nav = document.getElementById('navLinks');
+  const navLinks = document.querySelectorAll('#navLinks .nav-item a');
+
+  function closeMenu() {
+    nav.classList.remove('active');
+    burger.classList.remove('open');
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
 
 
 

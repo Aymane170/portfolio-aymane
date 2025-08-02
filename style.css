@@ -20,6 +20,14 @@
   --dark-bg: #0e0e10;
   --light-text: #f5f5f5;
   --gradient: linear-gradient(135deg, var(--blue-color), var(--accent));
+  --retro-bg: #181f2b;           /* Fond principal bleu foncé */
+  --retro-panel: #232e41;        /* Fond des cards/sections bleu plus clair */
+  --retro-green: #00ff00;
+  --retro-blue: #00bfff;         /* Bleu vif pour liserés et accents */
+  --retro-border: #00bfff;       /* Bordures bleues au lieu de vert */
+  --retro-font: 'VT323', 'Fira Mono', monospace;
+  --retro-accent: #ff00cc;
+  --retro-yellow: #ffff00;
 }
 
 /* --- Surcharges pour le Thème Clair --- */
@@ -593,6 +601,56 @@ header p {
   /* important pour apparaître au-dessus */
 }
 
+@media (max-width: 900px) {
+  .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--retro-panel);
+    z-index: 999;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--retro-panel);
+    z-index: 999;
+    gap: 2rem;
+  }
+}
+
 /* --- Sections --- */
 section {
   max-width: 1000px;
@@ -967,31 +1025,6 @@ canvas {
 }
 
 #contact-form button {
-  background-color: #3b82f6;
-  /* Consider using a theme variable for buttons */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-#contact-form button:hover {
-  background-color: #2563eb;
-}
-
-.status-message {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* --- CV Button --- */
-.cv-button {
-  padding: 8px 16px;
-  font-size: 1rem;
-  border: none;
-  background-color: var(--primary);
   /* Consistent with nav bar */
   color: white;
   border-radius: 4px;
