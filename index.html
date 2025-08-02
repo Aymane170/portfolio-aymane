@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!-- Métadonnées du document -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Aymane Rami</title>
+
+  <!-- Liens vers les feuilles de style externes -->
+  <!-- Feuille de style principale de l'application -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Police Google Fonts 'Fira Code' pour une meilleure lisibilité du code/texte technique -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- En-tête principal de la page (section Hero) -->
+  <header class="hero-header">
+    <!-- Conteneur pour le fond animé de particules (généralement géré par particles.js) -->
+    <canvas id="particles-js"></canvas>
+    <!-- Superposition pour créer un effet de nébulosité ou de voile -->
+    <div class="nebula-overlay"></div>
+
+    <!-- Élément audio pour la musique de fond spatiale -->
+    <audio id="space-audio" loop>
+      <!-- Source du fichier audio MP3 -->
+      <source src="audio/audio.mp3" type="audio/mpeg">
+      <!-- Message de secours si le navigateur ne supporte pas l'élément audio -->
+      🌌 Votre navigateur ne supporte pas l'audio.
+    </audio>
+    <!-- Bouton pour activer/désactiver le son (icône de haut-parleur) -->
+    <button id="toggle-sound" class="sound-btn">🔊</button>
+
+    <!-- Conteneur pour les étoiles flottantes animées -->
+    <!-- Ces étoiles sont générées manuellement avec des styles en ligne pour des positions et tailles variées.
+             Pour un grand nombre d'étoiles, une génération via JavaScript serait plus dynamique. -->
+    <div class="floating-stars">
+      <!-- Exemple d'une étoile avec ses propriétés de position, taille, opacité et vitesse d'animation -->
+      <span class="star" style="--top: 0.12; --left: 0.85; --size: 0.7; --opacity: 0.9; --speed: 1.4;"></span>
+      <span class="star" style="--top: 0.34; --left: 0.41; --size: 0.5; --opacity: 0.6; --speed: 1.2;"></span>
+      <span class="star" style="--top: 0.79; --left: 0.18; --size: 0.6; --opacity: 0.8; --speed: 1.8;"></span>
+      <span class="star" style="--top: 0.10; --left: 0.05; --size: 0.9; --opacity: 0.7; --speed: 2.0;"></span>
+      <span class="star" style="--top: 0.62; --left: 0.92; --size: 0.4; --opacity: 0.4; --speed: 1.1;"></span>
+      <span class="star" style="--top: 0.53; --left: 0.17; --size: 0.8; --opacity: 0.6; --speed: 2.1;"></span>
+      <span class="star" style="--top: 0.25; --left: 0.73; --size: 0.5; --opacity: 0.7; --speed: 1.6;"></span>
+      <span class="star" style="--top: 0.83; --left: 0.61; --size: 0.6; --opacity: 0.9; --speed: 1.3;"></span>
+      <span class="star" style="--top: 0.44; --left: 0.08; --size: 0.4; --opacity: 0.5; --speed: 1.9;"></span>
+      <span class="star" style="--top: 0.90; --left: 0.95; --size: 0.6; --opacity: 0.8; --speed: 1.7;"></span>
+      <span class="star" style="--top: 0.17; --left: 0.27; --size: 0.5; --opacity: 0.5; --speed: 1.1;"></span>
+      <span class="star" style="--top: 0.68; --left: 0.47; --size: 0.8; --opacity: 0.7; --speed: 1.5;"></span>
+      <span class="star" style="--top: 0.06; --left: 0.91; --size: 0.6; --opacity: 0.9; --speed: 2.2;"></span>
+      <span class="star" style="--top: 0.55; --left: 0.33; --size: 0.7; --opacity: 0.6; --speed: 1.4;"></span>
+      <span class="star" style="--top: 0.23; --left: 0.63; --size: 0.9; --opacity: 0.8; --speed: 1.2;"></span>
+      <span class="star" style="--top: 0.37; --left: 0.12; --size: 0.6; --opacity: 0.4; --speed: 1.9;"></span>
+      <span class="star" style="--top: 0.77; --left: 0.38; --size: 0.4; --opacity: 0.5; --speed: 2.1;"></span>
+    </div>
+    <!-- Superposition générale pour les effets visuels sur l'en-tête -->
+    <div class="overlay"></div>
+
+    <!-- Contenu principal de l'en-tête (Nom et sous-titre) -->
+    <div class="content">
+      <h1 class="modern-title">
+        Aymane <span class="highlight">Rami</span>
+      </h1>
+      <!-- Paragraphe pour l'effet de texte tapé (géré par JavaScript) -->
+      <p class="subtitle" id="typing-text"></p>
+    </div>
+  </header>
+
+  <!-- Barre de navigation principale -->
+  <nav class="navbar">
+    <!-- Bouton burger pour la navigation mobile, géré par JavaScript -->
+    <div class="burger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <!-- Liens de navigation -->
+    <ul class="nav-links" id="navLinks">
+      <li class="nav-item"><a href="#presentation">À propos</a></li>
+      <li class="nav-item"><a href="#competences">Compétences</a></li>
+      <li class="nav-item"><a href="#experience">Expériences</a></li>
+      <li class="nav-item"><a href="#projets">Projets</a></li>
+      <li class="nav-item"><a href="#contact">Contact</a></li>
+    </ul>
+    <!-- Section droite de la barre de navigation (bouton CV) -->
+    <div class="nav-right">
+      <!-- Bouton pour ouvrir le modal de téléchargement du CV -->
+      <button class="cv-button" onclick="openModal()">📄 Téléchargez mon CV</button>
+    </div>
+  </nav>
+
+  <!-- Section "À propos de moi" -->
+  <section id="presentation">
+    <h2 class="section-title blue-text">À propos de moi</h2>
+    <p>
+      <strong><span class="highlight">Développeur Full-Stack junior</span></strong>, passionné par l’univers de la <span
+        class="highlight">data</span>
+      et l’innovation technologique.
+    </p>
+    <p>
+      J’explore ce domaine en créant des projets mêlant <em>développement logiciel</em>, <em>traitement de données</em>
+      et <em>automatisation</em>, toujours avec l’objectif d’apporter des solutions concrètes et impactantes.
+    </p>
+    <p class="list-intro">Mes compétences clés :</p>
+    <ul class="skills-list">
+      <li>🛠️ <span class="highlight">Conception</span> d’applications robustes et scalables</li>
+      <li>⚙️ <span class="highlight">Développement</span> et optimisation d’API performantes</li>
+      <li>📊 <span class="highlight">Structuration</span> et gestion efficace des bases de données</li>
+      <li>🤖 <span class="highlight">Automatisation</span> intelligente des flux de données</li>
+    </ul>
+    <p>
+      Je privilégie un code <span class="hover-fade">propre</span>, <span class="hover-fade">efficace</span> et <span
+        class="hover-fade">maintenable</span>, en mettant toujours l’accent sur l’expérience utilisateur et la
+      collaboration en équipe.
+    </p>
+    <p>
+      <span class="highlight">Curieux</span>, <span class="highlight">rigoureux</span> et <span
+        class="highlight">ambitieux</span>, je cherche constamment à apprendre, à partager et à repousser mes limites.
+    </p>
+    <p class="story-end">
+      Ce qui me motive ? Créer des outils qui ont du sens, et ne jamais cesser d’apprendre.
+    </p>
+  </section>
+
+  <!-- Section "Compétences" -->
+  <section id="competences">
+    <h2 class="section-title blue-text">Compétences</h2>
+
+    <!-- Ligne de compétences : Langages informatiques -->
+    <div class="competence-row">
+      <div class="competence-info">
+        <h3>Langages informatiques</h3>
+        <div class="skills-container">
+          <!-- Chaque compétence est représentée par une image et un nom -->
+          <div class="skill">
+            <img src="logos/c-sharp-logo.png" alt="Logo C#" />
+            <span class="skill-name">C#</span>
+          </div>
+          <div class="skill">
+            <img src="logos/java-logo.svg" alt="Logo Java" />
+            <span class="skill-name">Java</span>
+          </div>
+          <div class="skill">
+            <img src="logos/python-logo.svg" alt="Logo Python" />
+            <span class="skill-name">Python</span>
+          </div>
+          <div class="skill">
+            <img src="logos/sql-logo.svg" alt="Logo SQL" />
+            <span class="skill-name">SQL</span>
+          </div>
+          <div class="skill">
+            <img src="logos/javascript-logo.svg" alt="Logo JavaScript" />
+            <span class="skill-name">JavaScript</span>
+          </div>
+        </div>
+      </div>
+      <!-- Zone pour le graphique des compétences (généralement Chart.js) -->
+      <div class="competence-chart">
+        <canvas id="skillsChart" width="400" height="400"></canvas>
+      </div>
+    </div>
+
+    <!-- Ligne de compétences : Frameworks -->
+    <div class="competence-row">
+      <div class="competence-info">
+        <h3 class="section-title blue-text">Frameworks</h3>
+        <div class="skills-container">
+          <div class="skill">
+            <img src="logos/asp-net-logo.svg" alt="Logo ASP .NET" />
+            <span class="skill-name">ASP .NET</span>
+          </div>
+          <div class="skill">
+            <img src="logos/django-logo.svg" alt="Logo Django" />
+            <span class="skill-name">Django</span>
+          </div>
+          <div class="skill">
+            <img src="logos/flutter-logo.svg" alt="Logo Flutter" />
+            <span class="skill-name">Flutter</span>
+          </div>
+          <div class="skill">
+            <img src="logos/github-actions-logo.svg" alt="Logo GitHub Actions" />
+            <span class="skill-name">Github Actions</span>
+          </div>
+          <div class="skill">
+            <img src="logos/entity-framework-logo.png" alt="Logo Entity Framework" />
+            <span class="skill-name">Entity Framework</span>
+          </div>
+          <div class="skill">
+            <img src="logos/springboot-logo.png" alt="Logo Spring Boot" />
+            <span class="skill-name">Spring Boot</span>
+          </div>
+        </div>
+      </div>
+      <!-- Zone pour le graphique des frameworks -->
+      <div class="competence-chart">
+        <canvas id="frameworksChart" width="400" height="400"></canvas>
+      </div>
+    </div>
+
+    <!-- Ligne de compétences : Outils -->
+    <div class="competence-row">
+      <div class="competence-info">
+        <h3 class="section-title blue-text">Outils</h3>
+        <div class="skills-container">
+          <div class="skill">
+            <img src="logos/git-logo.svg" alt="Logo Git" />
+            <span class="skill-name">Git</span>
+          </div>
+          <div class="skill">
+            <img src="logos/methode agile.png" alt="Logo Méthodologie Agile" />
+            <span class="skill-name">Méthodologie Agile</span>
+          </div>
+          <div class="skill">
+            <img src="logos/dbt-logo.svg" alt="Logo dbt" />
+            <span class="skill-name">dbt</span>
+          </div>
+          <div class="skill">
+            <img src="logos/snowflake-logo.svg" alt="Logo Snowflake" />
+            <span class="skill-name">Snowflake</span>
+          </div>
+          <div class="skill">
+            <img src="logos/tableau-logo.svg" alt="Logo Tableau" />
+            <span class="skill-name">Tableau</span>
+          </div>
+        </div>
+      </div>
+      <!-- Zone pour le graphique des outils -->
+      <div class="competence-chart">
+        <canvas id="toolsChart" width="391" height="300"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section "Expérience professionnelle" -->
+  <section id="experience">
+    <h2 class="section-title blue-text">Expérience professionnelle</h2>
+    <div class="experience-grid">
+      <!-- Carte d'expérience : Projet personnel – Hospital Analytics -->
+      <a href="https://github.com/Aymane170/hospital-analytics" target="_blank" rel="noopener noreferrer">
+        <div class="card">
+          <h3>Projet personnel – Hospital Analytics</h3>
+          <p>Juin 2025</p>
+          <ul>
+            <li>Développement d’un pipeline analytique pour un hôpital fictif</li>
+            <li>Génération de données synthétiques (patients, médecins, hospitalisations) avec Python, Faker et NumPy
+            </li>
+            <li>Chargement des fichiers CSV dans Snowflake</li>
+            <li>Modélisation des données avec dbt</li>
+            <li>Export des résultats pour analyses et création d'un tableau de bord initial dans Tableau</li>
+          </ul>
+        </div>
+      </a>
+
+      <!-- Carte d'expérience : Projet personnel – FakeSchoolData -->
+      <a href="https://github.com/Aymane170/FakeSchoolData" target="_blank" rel="noopener noreferrer">
+        <div class="card">
+          <h3>Projet personnel – FakeSchoolData</h3>
+          <p>Avril 2025 – Juin 2025</p>
+          <ul>
+            <li>Pipeline de données simulées pour école fictive</li>
+            <li>Génération de jeux de données CSV synthétiques pour étudiants, cours et résultats avec Python et Faker
+            </li>
+            <li>Base de données Snowflake et transformations avec DBT</li>
+            <li>Scripts Python pour analyses et génération de rapports visuels avec Matplotlib</li>
+            <li>Automatisation avec GitHub Actions</li>
+          </ul>
+        </div>
+      </a>
+
+      <!-- Carte d'expérience : Développeur full-stack - Stagiaire @ Lexlau -->
+      <div class="card">
+        <h3>Développeur full-stack - Stagiaire @ Lexlau</h3>
+        <p>Février 2024 – Juin 2024</p>
+        <ul>
+          <li>Développement d’un module de génération automatique de documents</li>
+          <li>Communication à la base de données SQLServer via Entity Framework</li>
+          <li>Création d'une API communiquant les différents templates de document juridique</li>
+          <li>Techno : C#, ASP.NET Core, Dart, Flutter, GitLab</li>
+          <li>Collaboration avec 4 développeurs, méthode agile</li>
+        </ul>
+      </div>
+
+      <!-- Carte d'expérience : Projet personnel – ConqueringSpace -->
+      <a href="https://github.com/AymaneR17/ConqueringSpace" target="_blank" rel="noopener noreferrer">
+        <div class="card">
+          <h3>Projet personnel – ConqueringSpace</h3>
+          <p>Octobre 2023 – Janvier 2024</p>
+          <ul>
+            <li>Projet réalisé en C# ASP .NET</li>
+            <li>Simulation de l'univers qui nous entoure</li>
+            <li>Gestion des objets célestes tels que des comètes, des constellations, satellites, planètes</li>
+            <li>Deux API, une pour l'authentification et l'autre pour la gestion des objets célestes</li>
+            <li>Communication à la base de données SQLServer via Entity Framework</li>
+            <li>Frontend réalisé en JS et Page Razor (cshtml)</li>
+          </ul>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section "Projets académiques" -->
+  <section id="projets">
+    <h2 class="section-title blue-text">Projets académiques</h2>
+    <ul>
+      <li><strong>Express Market</strong> – C# / MAUI, Access : Gestion d’une boutique multidevice</li>
+      <li><strong>UFCEvent</strong> – Java Android : Application mobile avec paris virtuels sur événements MMA</li>
+      <li><strong>Helb Park</strong> – JavaFX : Gestion complète de parking, patterns MVC, Strategy</li>
+      <li><strong>Helb Manager</strong> – Python / Django : Développement d'un site web complet de gestion de projet
+      </li>
+    </ul>
+  </section>
+
+  <!-- Section "Contact" -->
+  <section id="contact" class="contact-section">
+    <h2 class="section-title blue-text">Contact</h2>
+    <!-- Conteneur pour les deux cartes de contact -->
+    <div class="contact-cards-container">
+      <!-- Carte des informations de contact directes -->
+      <div class="card contact-info-card">
+        <h3>Mes coordonnées</h3>
+        <p>
+          <img src="logos/email-logo.svg" alt="Icône Email" class="contact-icon" />
+          <a href="mailto:aymanerami9@gmail.com">aymanerami9@gmail.com</a>
+        </p>
+        <p>
+          <img src="logos/telephone-logo.svg" alt="Icône Téléphone" class="contact-icon" />
+          <a href="tel:+32484826048">+32 484 82 60 48</a>
+        </p>
+        <p>
+          <img src="logos/github-logo.svg" alt="Icône GitHub" class="contact-icon" />
+          <a href="https://www.github.com/Aymane170" target="_blank" rel="noopener noreferrer">github.com/Aymane170</a>
+        </p>
+        <p>
+          <img src="logos/linkedin-logo.svg" alt="Icône LinkedIn" class="contact-icon" />
+          <a href="https://www.linkedin.com/in/aymane-rami-6112a9221/" target="_blank"
+            rel="noopener noreferrer">linkedin.com/in/aymane-rami-6112a9221</a>
+        </p>
+      </div>
+
+      <!-- Carte du formulaire de contact direct -->
+      <div class="card contact-form-card">
+        <h3>Envoyez-moi un message</h3>
+        <form id="contact-form" action="https://formspree.io/f/manjzlbl" method="POST">
+          <input type="text" name="name" placeholder="Votre nom" required />
+          <input type="email" name="email" placeholder="Votre email" required />
+          <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+          <button type="submit">Envoyer</button>
+          <!-- Message de statut du formulaire (succès/erreur) -->
+          <p id="form-status" class="status-message"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal pour le téléchargement du CV -->
+  <div id="cvModal" class="modal">
+    <div class="modal-content">
+      <!-- Bouton de fermeture du modal -->
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>Choisissez une langue :</h3>
+      <div class="modal-buttons">
+        <!-- Liens de téléchargement du CV en différentes langues -->
+        <a href="cv/CV_Aymane_Rami_FR.pdf" download class="cv-choice">📄 CV en Français</a>
+        <a href="cv/CV_Aymane_Rami_EN.pdf" download class="cv-choice">📄 CV en Anglais</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bouton "Retour en haut" de la page -->
+  <button id="back-to-top" title="Retour en haut">↑</button>
+
+  <!-- Pied de page -->
+  <footer>
+    <p>&copy; 2025 Aymane RAMI. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Scripts JavaScript externes (chargés à la fin du body pour optimiser le rendu) -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <!-- Script JavaScript personnalisé de l'application -->
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1262 @@
+/* =====================================
+    0. Base Styles & Global Utilities
+    ===================================== */
+
+/* --- Polices & Importations --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
+
+/* --- Variables CSS (Tokens de Design) --- */
+:root {
+  --primary: #0a192f;
+  --accent: #64ffda;
+  --text: #ccd6f6;
+  --bg: #0a192f;
+  --section-bg: #112240;
+  --card-bg: #1c2a44;
+  --white: #ffffff;
+  --shadow: rgba(2, 12, 27, 0.7);
+  --font-family: 'Fira Code', monospace;
+  --blue-color: #5a9bd4;
+  --dark-bg: #0e0e10;
+  --light-text: #f5f5f5;
+  --gradient: linear-gradient(135deg, var(--blue-color), var(--accent));
+}
+
+/* --- Surcharges pour le Thème Clair --- */
+body.light {
+  --bg: #ffffff;
+  --text: #0a192f;
+  --section-bg: #f5f5f5;
+  --card-bg: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --blue-color: #2a5a8c;
+}
+
+/* --- Réinitialisation & Éléments de Base --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  /* Empêche le défilement horizontal */
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Assure également l'absence de défilement horizontal sur le corps */
+}
+
+/* Section d'En-tête (Header) */
+.hero-header {
+  position: relative;
+  background: #0e0e10;
+  background-size: cover;
+  background-position: center;
+  animation: moveNebula 30s infinite linear;
+  overflow: hidden;
+  color: white;
+}
+
+
+.nebula-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 30%, rgba(100, 149, 237, 0.15), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(255, 105, 180, 0.1), transparent 60%),
+    radial-gradient(circle at 50% 80%, rgba(173, 216, 230, 0.1), transparent 70%);
+  animation: moveNebula 60s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes moveNebula {
+
+  0%,
+  100% {
+    background-position: 30% 30%, 70% 60%, 50% 80%;
+  }
+
+  50% {
+    background-position: 35% 35%, 65% 55%, 55% 75%;
+  }
+}
+
+
+.hero-header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--blue-color);
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.hero-header .content {
+  position: relative;
+  z-index: 2;
+}
+
+.modern-title {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(270deg, #1e90ff, #ff6b6b, #1e90ff);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 8s ease infinite, fadeInUp 1s ease-out forwards;
+}
+
+.highlight {
+  color: var(--blue-color);
+
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.highlight:hover {
+  text-shadow: 0 0 15px var(--accent), 0 0 25px var(--blue-color);
+  transition: text-shadow 0.3s ease;
+}
+
+/* Particules et Toile Plein Écran */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.subtitle {
+  font-family: monospace;
+  font-size: 1.2rem;
+  color: #aaa;
+  white-space: nowrap;
+  border-right: 2px solid var(--blue-color);
+  overflow: hidden;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyframes (Animations) */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: var(--blue-color);
+  }
+}
+
+/* Étoiles Flottantes dans l'En-tête */
+.floating-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.floating-stars .star {
+  position: absolute;
+  width: calc(4px + 2px * var(--size));
+  height: calc(4px + 2px * var(--size));
+  top: calc(100% * var(--top));
+  left: calc(100% * var(--left));
+  background: white;
+  border-radius: 50%;
+  opacity: calc(0.3 + 0.5 * var(--opacity));
+  box-shadow: 0 0 8px white;
+
+  animation:
+    twinkle calc(1.5s + 2s * var(--speed)) ease-in-out infinite,
+    float calc(6s + 4s * var(--speed)) ease-in-out infinite;
+}
+
+
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  50% {
+    transform: translateY(-10px) translateX(5px);
+  }
+
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+
+.star {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px white;
+  animation: twinkle 2s infinite ease-in-out;
+  opacity: 0.8;
+}
+
+
+.star:nth-child(1) {
+  top: 10%;
+  left: 5%;
+}
+
+.star:nth-child(2) {
+  top: 20%;
+  left: 85%;
+}
+
+.star:nth-child(3) {
+  top: 35%;
+  left: 45%;
+}
+
+.star:nth-child(4) {
+  top: 50%;
+  left: 10%;
+}
+
+.star:nth-child(5) {
+  top: 70%;
+  left: 80%;
+}
+
+.star:nth-child(6) {
+  top: 85%;
+  left: 25%;
+}
+
+.star:nth-child(7) {
+  top: 15%;
+  left: 60%;
+}
+
+.star:nth-child(8) {
+  top: 65%;
+  left: 15%;
+}
+
+.star:nth-child(9) {
+  top: 90%;
+  left: 95%;
+}
+
+.star:nth-child(10) {
+  top: 65%;
+  left: 25%;
+}
+
+.star:nth-child(11) {
+  top: 45%;
+  left: 50%;
+}
+
+.star:nth-child(12) {
+  top: 25%;
+  left: 15%;
+}
+
+.star:nth-child(13) {
+  top: 40%;
+  left: 95%;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.3;
+    transform: scale(1.3);
+  }
+}
+
+
+.sound-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+
+
+/* Titres (H1, H2, etc.) */
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #64ffda, #0af4d4, #64ffda);
+  background-size: 200% auto;
+  color: transparent;
+  /* Rend le texte invisible pour afficher le dégradé en arrière-plan */
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shineText 3s linear infinite;
+}
+
+h2 {
+  font-size: 2.4rem;
+  margin-bottom: 25px;
+  color: var(--accent);
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Liens & Boutons */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 18px;
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--accent);
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* Utilitaires de Texte */
+.blue-text {
+  color: var(--blue-color);
+  transition: color 0.3s ease;
+}
+
+.hover-fade {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hover-fade::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background-color: var(--blue-color);
+  /* Corrected from --blue to --blue-color */
+  opacity: 0.6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.hover-fade:hover::after {
+  transform: scaleX(1);
+}
+
+.story-end {
+  font-style: italic;
+  margin-top: 20px;
+  opacity: 0.85;
+}
+
+/* Animations Générales */
+@keyframes shineText {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* =====================================
+    1. Layout & Structure
+    ===================================== */
+
+/* --- Header --- */
+header {
+  background-color: var(--section-bg);
+  color: var(--accent);
+  padding: 80px 20px 60px;
+  text-align: center;
+  box-shadow: 0 4px 10px var(--shadow);
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  z-index: 1;
+}
+
+header p {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--text);
+  max-width: 600px;
+  margin: 0 auto;
+  letter-spacing: 0.6px;
+  margin-top: 10px;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--section-bg);
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  gap: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 60px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+#toggle-sound {
+  position: fixed;
+  bottom: 30px;
+  /* Même distance du bas que back-to-top */
+  left: 30px;
+  /* À gauche au lieu de droite */
+  width: 48px;
+  height: 48px;
+  background-color: var(--blue-color);
+  color: var(--primary);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 48px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+  /* Un peu en dessous de back-to-top */
+  padding: 0;
+}
+
+
+
+
+#toggle-theme {
+  background: var(--accent);
+  color: var(--primary);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: auto;
+  /* Pushes the button to the far right */
+}
+
+.burger {
+  display: none;
+  /* Hidden by default, shown in mobile */
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  list-style: none;
+  position: static;
+  width: auto;
+  background: transparent;
+  box-shadow: none;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: #9e9e9e;
+  padding: 8px 12px;
+  font-weight: 500;
+  display: flex;
+  /* For consistent alignment with CV button */
+  align-items: center;
+  height: 36px;
+  /* Same height as CV button */
+}
+
+.nav-links li a:hover {
+  color: var(--white);
+}
+
+.nav-links.active {
+  display: flex;
+  /* ou block selon la structure */
+  flex-direction: column;
+  /* si flex */
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: #222;
+  padding: 10px;
+  z-index: 999;
+  /* important pour apparaître au-dessus */
+}
+
+/* --- Sections --- */
+section {
+  max-width: 1000px;
+  margin: 40px auto;
+  background-color: var(--section-bg);
+  border-radius: 14px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 24px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(100, 255, 218, 0.25);
+}
+
+/* --- Footer --- */
+footer {
+  background-color: var(--section-bg);
+  color: #8892b0;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  margin-top: 60px;
+}
+
+/* --- Back to Top Button --- */
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  /* Hidden by default */
+  width: 48px;
+  height: 48px;
+  background-color: var(--blue-color);
+  color: var(--primary);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 48px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  z-index: 1100;
+  padding: 0;
+}
+
+#back-to-top:hover {
+  background-color: #52e3be;
+  /* A lighter shade of accent for hover */
+}
+
+/* =====================================
+    2. Components
+    ===================================== */
+
+/* --- Cards (General) --- */
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 25px 30px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+  cursor: default;
+  break-inside: avoid;
+  /* Prevents cards from breaking across columns in multi-column layouts */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(100, 255, 218, 0.35);
+  border-color: var(--accent);
+}
+
+/* Note: `card:nth-child(2n)` has been removed as it was likely a leftover from a grid layout and caused unnecessary margin-top adjustments. If needed for specific layouts, it should be re-added within that specific layout's section. */
+
+/* --- Presentation Section Specifics --- */
+#presentation ul li {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+#presentation ul li::before {
+  content: "→ ";
+  color: var(--blue-color);
+  font-weight: bold;
+}
+
+#presentation p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* --- Skills / Competencies --- */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.skills-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.skills-list li {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 1.05rem;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.skills-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--blue-color);
+  /* Corrected from --blue to --blue-color */
+  font-weight: bold;
+}
+
+.skill {
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 12px var(--shadow);
+  border-radius: 12px;
+  padding: 0;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.skill:hover {
+  box-shadow: 0 10px 30px rgba(100, 255, 218, 0.5);
+}
+
+.skill img {
+  width: 48px;
+  height: 48px;
+  margin: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.skill-name {
+  opacity: 1;
+  margin-top: 8px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #00bfff, #00ffdd, #00bfff);
+  background-size: 200% 100%;
+  background-position: 0% center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.5s ease;
+  pointer-events: none;
+  user-select: none;
+  color: var(--text);
+  /* Fallback color for browsers not supporting text-fill-color */
+}
+
+.skill:hover .skill-name {
+  animation: shineText 3s linear infinite;
+  pointer-events: auto;
+}
+
+/* --- Lists (General) --- */
+ul {
+  padding-left: 22px;
+  margin-top: 12px;
+}
+
+li {
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+/* =====================================
+    3. Specific Layouts & Grids
+    ===================================== */
+
+/* --- Experience Grid --- */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  align-items: stretch;
+  /* Ensures cards have equal height */
+}
+
+/* --- Competence Section Layout --- */
+#competences {
+  display: grid;
+  /* Using grid for overall competence section layout */
+  grid-template-columns: 1fr;
+  /* Default to single column */
+  gap: 30px;
+}
+
+.competence-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+
+.competence-info {
+  flex: 1;
+  order: 1;
+  /* Default order for desktop */
+}
+
+.competence-info h3 {
+  margin-bottom: 20px;
+  color: var(--accent);
+  line-height: 1.2;
+}
+
+.competence-chart {
+  flex: 1;
+  order: 2;
+  /* Default order for desktop */
+  background-color: var(--card-bg);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 20px var(--shadow);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.competence-chart:hover {
+  box-shadow: 0 16px 40px rgba(100, 255, 218, 0.35);
+  cursor: pointer;
+}
+
+.competence-chart canvas {
+  max-width: 100%;
+  max-height: 300px;
+  /* Limits height to avoid stretching */
+  height: auto !important;
+  /* Overrides inline styles for responsiveness */
+  display: block;
+  margin: 0 auto;
+}
+
+/* --- Chart Canvas (General) --- */
+canvas#skillsChart {
+  /* Specific ID for skills chart */
+  max-width: 350px;
+  max-height: 350px;
+  display: block;
+  margin: 0 auto;
+}
+
+canvas {
+  /* General canvas styles */
+  display: block;
+  margin: 20px auto;
+  width: 100% !important;
+  height: auto !important;
+}
+
+.charts-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 20px;
+  margin: 20px 0;
+  min-height: 350px;
+  /* Ensures consistent height across charts row */
+}
+
+.chart-container {
+  flex: 1 1 33%;
+  /* Base at 33% for 3 equal columns */
+  min-width: 0;
+  /* Prevents content from forcing wider columns */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 10px;
+  transition: box-shadow 0.3s ease;
+  height: 100%;
+  /* Ensures children take full height */
+}
+
+.chart-container canvas {
+  flex-grow: 1;
+  height: auto !important;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.chart-container:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+/* =====================================
+    4. Forms & Modals
+    ===================================== */
+
+/* --- Contact Section --- */
+.contact-section {
+  /* La section hérite déjà de max-width et margin: auto des styles généraux de 'section'. */
+  padding: 40px 30px;
+  /* Conserve le padding de la section */
+  text-align: center;
+  /* Centre le contenu de la section */
+  /* Les styles de section généraux (max-width, margin, background, shadow) s'appliquent ici. */
+}
+
+/* Styles pour les cartes de contact individuelles */
+.contact-info-card,
+.contact-form-card {
+  width: 100%;
+  /* Chaque carte prend la largeur complète de la section parente */
+  margin-bottom: 30px;
+  /* Ajoute un espace entre les cartes */
+  text-align: left;
+  /* Aligne le texte à gauche à l'intérieur des cartes */
+  /* Les styles généraux de '.card' (background, padding, border-radius, shadow, hover) s'appliquent également. */
+}
+
+/* Supprime la marge inférieure de la dernière carte pour éviter un espace excessif en fin de section */
+.contact-section .contact-form-card {
+  margin-bottom: 0;
+}
+
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: var(--card-bg);
+  /* Use theme variable */
+  color: var(--text);
+  /* Use theme variable */
+}
+
+#contact-form button {
+  background-color: #3b82f6;
+  /* Consider using a theme variable for buttons */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#contact-form button:hover {
+  background-color: #2563eb;
+}
+
+.status-message {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* --- CV Button --- */
+.cv-button {
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  background-color: var(--primary);
+  /* Consistent with nav bar */
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  transition: background-color 0.3s ease;
+}
+
+.cv-button:hover {
+  background-color: #1567af;
+  /* Consider a more vibrant hover, or align with --accent */
+}
+
+/* --- Contact Icons (for CV/Contact info) --- */
+.contact-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+  filter: invert(80%) sepia(20%) saturate(200%) hue-rotate(150deg);
+  /* Adjust as needed for light/dark theme */
+}
+
+/* --- Modal --- */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--section-bg);
+  /* Use theme variable */
+  color: var(--text);
+  /* Use theme variable */
+  padding: 2rem;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  /* For positioning close button */
+}
+
+.modal-buttons {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cv-choice {
+  background-color: var(--blue-color);
+  /* Use theme variable */
+  color: var(--white);
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  display: block;
+  /* Makes it a block level button */
+}
+
+.cv-choice:hover {
+  background-color: #0056b3;
+  /* A darker shade of blue-color for hover */
+}
+
+.close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text);
+  /* Ensures visibility in both themes */
+}
+
+
+/* =====================================
+    5. Responsive Design (Media Queries)
+    ===================================== */
+
+/* --- Tablet & Smaller Desktop Adjustments (900px breakpoint) --- */
+@media (max-width: 900px) {
+  .competence-row {
+    flex-direction: column;
+    /* Stacks competence info and chart */
+  }
+
+  .competence-chart {
+    width: 100%;
+    flex: none;
+    /* Remove flex sizing */
+    margin-top: 20px;
+    will-change: auto !important;
+    /* Added for performance, but often not strictly needed with modern browsers */
+    transform: translateZ(0);
+    /* Promotes hardware acceleration */
+  }
+
+  .competence-info {
+    width: 100%;
+    /* Take full width */
+  }
+
+  .competence-chart canvas {
+    max-width: 100%;
+    height: 400px !important;
+    /* Specific height for chart on smaller screens */
+  }
+
+  .skills-container {
+    justify-content: center;
+    /* Center align skills when stacked */
+  }
+
+  .charts-row {
+    flex-direction: column;
+    /* Stack charts vertically */
+    align-items: center;
+    /* Center align stacked charts */
+    min-height: auto;
+    /* Remove min-height when stacked */
+  }
+
+  .chart-container {
+    width: 100%;
+    /* Take full width when stacked */
+    max-width: 400px;
+    /* Limit max width for readability */
+  }
+}
+
+/* --- Mobile Adjustments (768px breakpoint) --- */
+@media (max-width: 768px) {
+
+  /* Navigation */
+  .burger {
+    display: flex;
+    /* Show burger icon */
+  }
+
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #3e2ee7;
+    padding: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: var(--card-bg);
+    padding: 10px;
+    z-index: 999;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  /* Header */
+  header h1 {
+    font-size: 2.6rem;
+  }
+
+  /* Sections */
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  section {
+    padding: 20px;
+    /* Reduced padding for smaller screens */
+    margin: 30px auto;
+    /* Reduced margin */
+  }
+
+  /* Cards */
+  .card {
+    padding: 20px;
+    width: 100%;
+    /* Cards take full width in flex on small screens */
+    margin-top: 0 !important;
+    /* Ensure no extra top margin from :nth-child(2n) */
+  }
+
+  /* Skills */
+  .skills-container {
+    gap: 10px;
+    /* Slightly reduced gap */
+  }
+
+  .skill {
+    width: 80px;
+    /* Smaller skill icons/boxes */
+    height: 80px;
+  }
+
+  .skill img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+    /* Stack experience cards vertically */
+  }
+
+  /* Contact section cards stacking on mobile */
+  .contact-info-card,
+  .contact-form-card {
+    flex: 1 1 100%;
+    /* Each card takes full width on mobile */
+    max-width: 100%;
+    /* Ensure it doesn't exceed container width */
+  }
+}
+
+/* --- Even Smaller Mobile Adjustments (480px breakpoint) --- */
+@media screen and (max-width: 480px) {
+  section {
+    padding: 20px;
+    /* Further reduced padding */
+  }
+
+  .skill {
+    width: 70px;
+    height: 70px;
+  }
+
+  .skill img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .modal-content {
+    width: 90%;
+    /* Wider modal on very small screens */
+    margin: 10% auto;
+    /* Adjust margin */
+    margin-top: 80px;
+    /* Ajoutez ceci pour décaler le contenu si votre header est fixe et haut de 80px */
+
+  }
+}
