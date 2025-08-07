@@ -1037,10 +1037,24 @@ canvas {
   transition: background-color 0.3s ease;
 }
 
+.cv-button {
+  background-color: var(--card-bg, #1976d2); /* Utilise une variable si tu en as */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
 .cv-button:hover {
   background-color: #1567af;
-  /* Consider a more vibrant hover, or align with --accent */
+  transform: translateY(-1px);
 }
+
 
 /* --- Contact Icons (for CV/Contact info) --- */
 .contact-icon {
