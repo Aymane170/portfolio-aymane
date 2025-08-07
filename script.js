@@ -354,7 +354,7 @@ particlesJS("particles-js", {
 // EFFET DE TEXTE TAPÉ (TYPING EFFECT)
 // =====================================================================
 
-const textToType = "Développeur Full-Stack Junior & Passionné de Data"; // Texte à afficher
+const textToType = "Développeur Full-Stack & Passionné de Data"; // Texte à afficher
 let charIndex = 0; // Index du caractère actuel
 
 /**
